@@ -1,0 +1,200 @@
+# Editable portfolio content for the homepage.
+# Update biography, project text, links, media paths, and publication metadata here.
+# Layout and styling live separately in index.html, _layouts/default.html, and style.scss.
+
+site:
+  name: "Chandramouli Rajagopalan"
+  role: "Research Engineer (Robotics)"
+  role_detail: "Research Engineer (Robotics) · Robot Learning & Embodied AI"
+  title: "Chandramouli Rajagopalan | Robot Learning, Sim-to-Real, and Adaptive Robotics"
+  description: "Research portfolio of Chandramouli Rajagopalan, focusing on sim-to-real robot learning, adaptive and continual learning, offline reinforcement learning, world models, and embodied AI."
+  url: "https://chamorajg.github.io"
+  email: "mailto:chanduiyer.raja@gmail.com"
+  github: "https://github.com/chamorajg"
+  linkedin: "https://www.linkedin.com/in/chandramouli-rajagopalan/"
+  cv_path: "assets/Chandramouli_Rajagopalan_CV.pdf"
+  profile_image: "images/myprofile.jpeg"
+
+hero:
+  tagline: "I build data-efficient robot learning systems that transfer from simulation and offline data to real-world robots, then continue adapting under changes in dynamics, perception, and task conditions."
+  labels:
+    - "Sim-to-Real"
+    - "Domain Randomization"
+    - "Adaptive Learning"
+    - "Continual Learning"
+    - "Offline RL"
+    - "World Models"
+
+research_vision:
+  question: "How can robots remain reliable when deployment conditions differ from their training distribution?"
+  body: "My research focuses on robust robot learning under distribution shift. I study how simulation, offline data, uncertainty-aware adaptation, and multimodal feedback can be combined to initialize policies efficiently and improve them from limited real-world experience. My long-term goal is to develop robots that adapt to new dynamics, observations, tasks, and embodiments without forgetting previously learned skills."
+  pillars:
+    - title: "Robust Sim-to-Real Transfer"
+      body: "Develop policies that tolerate inaccuracies in dynamics, contact, latency, perception, and hardware interfaces."
+    - title: "Adaptive and Continual Robot Learning"
+      body: "Enable robots to detect distribution shift, adapt from limited real-world interaction, and acquire new skills without catastrophically forgetting prior capabilities."
+    - title: "Data-Efficient Real-World Learning"
+      body: "Use offline RL, world models, imitation learning, and pretrained multimodal models to reduce expensive real-robot interaction."
+
+projects:
+  - title: "Robust Sim-to-Real Manipulation"
+    question: "How can policies trained in simulation retain precision under contact variation, hardware mismatch, latency, and imperfect observations?"
+    description:
+      - "Built end-to-end sim-to-real reinforcement-learning pipelines for object stacking and peg insertion on OpenArm, as well as free-grasp transfer on the Panthera-HT manipulation platform. The work covered simulation task design, contact-rich policy training, observation and action interface alignment, hardware integration, and real-robot evaluation."
+    contribution: "Simulation task design, contact-rich policy training, observation/action interface alignment, hardware integration, and real-robot evaluation."
+    highlights: []
+    methods:
+      - "Sim-to-Real"
+      - "Reinforcement Learning"
+      - "Contact-Rich Manipulation"
+      - "OpenArm"
+      - "Panthera-HT"
+    media:
+      - type: "video"
+        path: "assets/media/openarm-stacking.mp4"
+        caption: "OpenArm object stacking policy transfer."
+        available: false
+      - type: "video"
+        path: "assets/media/openarm-peg-insertion.mp4"
+        caption: "OpenArm peg insertion policy transfer."
+        available: false
+      - type: "video"
+        path: "assets/media/panthera-free-grasp.mp4"
+        caption: "Panthera-HT free-grasp transfer."
+        available: false
+    links: []
+
+  - title: "Occlusion-Robust Ping-Pong Control"
+    featured: true
+    question: "How can a dynamic control policy remain stable when state observations are temporarily unavailable or noisy?"
+    description:
+      - "Developed and deployed a state-based sim-to-real controller for dynamic robotic ping-pong ball control. The system sustained continuous paddle-ball juggling on real hardware for 30 minutes without failure while maintaining and recovering closed-loop state estimates through temporary ball occlusions, observation noise, and timing-sensitive contacts."
+    contribution: "State-based sim-to-real control, real-hardware deployment, and robustness evaluation under occlusion, observation noise, and timing-sensitive contacts."
+    highlights:
+      - "30 minutes uninterrupted"
+      - "Real-robot deployment"
+      - "Recovery through temporary occlusion"
+    methods:
+      - "Sim-to-Real"
+      - "Dynamic Control"
+      - "State Estimation"
+      - "Occlusion Robustness"
+      - "Real-Robot Evaluation"
+    media:
+      - type: "video"
+        path: "assets/media/pingpong-real-world.mp4"
+        poster: "assets/images/pingpong-real-world-poster.jpg"
+        caption: "Real-world ping-pong control: continuous paddle-ball juggling with recovery through temporary ball occlusions."
+        available: false
+    links: []
+
+  - title: "Offline RL and World-Model Adaptation"
+    question: "How can offline robot data provide a strong initialization while limited online interaction corrects distribution shift safely?"
+    description:
+      - "Contributed to Finetuning Offline World Models in the Real World, which pretrains world models using offline real-robot data and subsequently adapts them using limited online interaction and uncertainty-aware planning."
+      - "Developed Value-Guided Action Transport, an offline reinforcement-learning method that refines behavior-cloned actions using Q-guided residual transport, path-based value evaluation, adaptive advantage gating, and a behavior-cloning anchor. The method achieved the highest or tied-highest normalized score on 9 of 12 evaluated D4RL tasks in the reported experiments."
+    contribution: "Offline-to-online world-model adaptation research contributions and development of Value-Guided Action Transport for offline reinforcement learning."
+    highlights:
+      - "Value-Guided Action Transport"
+      - "Ongoing Research"
+    methods:
+      - "Offline RL"
+      - "World Models"
+      - "Offline-to-Online Adaptation"
+      - "Uncertainty"
+      - "Behavior Cloning"
+      - "Value-Guided Policy Improvement"
+    media:
+      - type: "image"
+        path: "assets/images/fowm-teaser.jpg"
+        alt: "Teaser figure for Finetuning Offline World Models in the Real World."
+        caption: "Finetuning Offline World Models in the Real World."
+        available: false
+      - type: "image"
+        path: "assets/images/value-guided-action-transport-results.jpg"
+        alt: "Results figure for Value-Guided Action Transport."
+        caption: "Value-Guided Action Transport results."
+        available: false
+    links:
+      - label: "Paper"
+        url: "https://arxiv.org/abs/2310.16029"
+      - label: "Project"
+        url: "https://yunhaifeng.com/FOWM/"
+
+  - title: "Vision-Language Robot Learning"
+    question: "Can pretrained multimodal models provide scalable supervision for long-horizon robot learning?"
+    description:
+      - "Designed reinforcement-learning environments for XLeRobot and BrainBot and fine-tuned Vision-Language-Action policies for robotic manipulation tasks. Developed a VLM-based progress-scoring system that estimates partial task completion from visual observations, providing scalable feedback for policy evaluation and long-horizon robot-learning experiments."
+    contribution: "Reinforcement-learning environment design, VLA policy finetuning, and VLM-based progress scoring for long-horizon manipulation experiments."
+    highlights: []
+    methods:
+      - "Vision-Language-Action"
+      - "Vision-Language Models"
+      - "Progress Estimation"
+      - "Robot Learning"
+      - "Long-Horizon Manipulation"
+    media:
+      - type: "video"
+        path: "assets/media/xlerobot-task.mp4"
+        caption: "XLeRobot manipulation task."
+        available: false
+      - type: "image"
+        path: "assets/images/vlm-progress-score.jpg"
+        alt: "VLM progress-scoring visualization."
+        caption: "Vision-language progress scoring."
+        available: false
+    links: []
+
+directions:
+  intro: "I am interested in pursuing the following questions during a PhD."
+  items:
+    - title: "Adaptive Domain Randomization"
+      question: "Can a robot use real-world failures to identify which simulator parameters are incorrect and automatically update its randomization distribution?"
+    - title: "Safe Offline-to-Online Adaptation"
+      question: "Can uncertainty, value estimates, and distribution-shift detection determine when a deployed policy should adapt and how much real-world exploration is safe?"
+    - title: "Continual Learning Across Tasks and Embodiments"
+      question: "How can a robot acquire new manipulation skills, environments, and hardware embodiments while preserving previously learned behaviors?"
+
+publications:
+  - title: "Finetuning Offline World Models in the Real World"
+    authors:
+      - "Yunhai Feng"
+      - "Nicklas Hansen"
+      - "Ziyan Xiong"
+      - "Chandramouli Rajagopalan"
+      - "Xiaolong Wang"
+    venue: "Conference on Robot Learning (CoRL), 2023 — Oral"
+    description: "Offline real-robot world-model pretraining followed by uncertainty-aware online finetuning for data-efficient adaptation to seen and unseen tasks."
+    links:
+      - label: "Paper"
+        url: "https://arxiv.org/abs/2310.16029"
+      - label: "Project"
+        url: "https://yunhaifeng.com/FOWM/"
+    verified: true
+  - title: "Deep Learning in a Bilateral Brain With Hemispheric Specialization"
+    authors:
+      - "Chandramouli Rajagopalan"
+      - "David Rawlinson"
+      - "Elkhonon Goldberg"
+      - "Gideon Kowadlo"
+    venue: "Springer LNCS / ACAIN 2024"
+    description: "A bilateral neural architecture in which complementary local and global feature specializations are integrated through a learned network head."
+    links:
+      - label: "Paper"
+        url: "https://arxiv.org/abs/2209.06862"
+      - label: "Code"
+        url: "https://github.com/Cerenaut/bilateral-brain"
+    verified: true
+  - title: "Universal Domain Adaptation to Improve Performance on Out-of-Distribution Data"
+    authors: []
+    venue: "PMLR / NeurIPS 2021"
+    description: ""
+    links: []
+    verified: false
+    private_todo:
+      - "Verify canonical author list."
+      - "Verify canonical publication URL."
+      - "Do not automatically link this entry to arXiv:2107.11011."
+
+about:
+  body: "I am a robotics research engineer working on sim-to-real transfer, reinforcement learning, world models, and multimodal robot learning. I received an M.S. in Intelligent Systems, Robotics and Control from the University of California, San Diego."

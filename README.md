@@ -1,15 +1,36 @@
-# updated website
+# Chandramouli Rajagopalan Research Portfolio
 
-This repo is built on a fork of **Jekyll Now** from [this repository](https://github.com/barryclark/jekyll-now). **Jekyll** is a static site generator that's perfect for GitHub hosted blogs ([Jekyll Repository](https://github.com/jekyll/jekyll))
+This repository contains the GitHub Pages site for Chandramouli Rajagopalan. It is a small Jekyll static site designed as an academic research portfolio for robot learning and embodied AI.
 
-The website design is just a modification of [Jon Barron's website](https://jonbarron.info/) and is converted for my own use, re-purposing my old markdown posts. **Feel free to use template for your own purposes**, but please respect copyright for all the images/content in my `images`, `pdfs`, `_posts` folders. 
+## Structure
 
+- `_data/portfolio.yml` contains editable biography, project, publication, link, and media metadata.
+- `index.html` renders the homepage from `_data/portfolio.yml`.
+- `_layouts/default.html` contains global metadata, navigation, JSON-LD, and footer markup.
+- `style.scss` contains the site CSS compiled by GitHub Pages/Jekyll.
+- `TODO_ASSETS.md` lists missing media and CV files.
+- `TODO_CONTENT.md` lists publication metadata that still needs verification.
 
+## Local Preview
 
-## issues
-* In general, jekyll will try to build a full page for every post. I skip that by forcing `permalink: /`. This creates multiple entries in sitemap.xml for index.html but is otherwise fine. 
-* If you want multiple paragraphs, consider using `excerpt_separator: <!--more-->` in `_config.yml`, for my own use I didn't need this. 
-* My own posts have lots of extra stuff left over from my old jekyll design ("author", long descriptions, etc.), feel free to ignore them
-* I use thumbnails, so I can upload arbitrary sized images but then only display small ones. The `_make_thumbnails.sh` script generates them and the html template looks in `tn/` for all images. 
-* I have three categories of post with slightly differerent formatting, so changing sizing requires edits in multiple paces. 
-* If you use this, I'd appreciate a link back either to this repo or my personal website so others can find this too. 
+Install Jekyll dependencies if needed:
+
+```bash
+bundle install
+```
+
+Run a local server:
+
+```bash
+bundle exec jekyll serve
+```
+
+Then open `http://127.0.0.1:4000/`.
+
+If Bundler is unavailable, GitHub Pages will still build the site from the repository root using the checked-in Jekyll files.
+
+## Deployment
+
+The site deploys from the repository root through GitHub Pages. Push changes to the default branch after review and GitHub Pages will rebuild the static site.
+
+To add project media later, place files at the paths listed in `_data/portfolio.yml`, update each media item's `available` field to `true`, and remove the corresponding entry from `TODO_ASSETS.md`.
