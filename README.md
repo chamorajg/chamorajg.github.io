@@ -8,7 +8,7 @@ This repository contains the GitHub Pages site for Chandramouli Rajagopalan. It 
 - `index.html` renders the homepage from `_data/portfolio.yml`.
 - `_layouts/default.html` contains global metadata, navigation, JSON-LD, and footer markup.
 - `style.scss` contains the site CSS compiled by GitHub Pages/Jekyll.
-- `TODO_ASSETS.md` lists missing media and CV files.
+- `TODO_ASSETS.md` lists missing project media files.
 - `TODO_CONTENT.md` lists publication metadata that still needs verification.
 
 ## Local Preview

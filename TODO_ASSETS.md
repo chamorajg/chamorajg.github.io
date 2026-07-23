@@ -1,10 +1,6 @@
 # TODO Assets
 
-The current repository does not contain the requested robot-learning media or CV file below. The site omits missing images and videos from rendered media tags to avoid broken layouts. Add the files at these paths, then set the corresponding `available` values to `true` in `_data/portfolio.yml`.
-
-## CV
-
-- `assets/Chandramouli_Rajagopalan_CV.pdf`
+The current repository does not contain the requested robot-learning media below. The site omits missing images and videos from rendered media tags to avoid broken layouts. Add the files at these paths, then set the corresponding `available` values to `true` in `_data/portfolio.yml`.
 
 ## Project Videos
 
