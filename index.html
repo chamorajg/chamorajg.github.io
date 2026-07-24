@@ -1,0 +1,173 @@
+---
+layout: default
+---
+
+{% assign p = site.data.portfolio %}
+
+<main id="main-content">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__content">
+      <p class="eyebrow">{{ p.site.role_detail }}</p>
+      <h1 id="hero-title">{{ p.site.name }}</h1>
+      <p class="hero__tagline">{{ p.hero.tagline }}</p>
+      <div class="label-list" aria-label="Research areas">
+        {% for label in p.hero.labels %}
+          <span>{{ label }}</span>
+        {% endfor %}
+      </div>
+      <div class="button-row" aria-label="Primary navigation">
+        <a class="button" href="#research">Selected Research</a>
+        <a class="button button--secondary" href="#publications">Publications</a>
+        <a class="button button--secondary" href="{{ p.site.cv_path }}">CV</a>
+      </div>
+      <div class="text-links" aria-label="Profile links">
+        <a href="{{ p.site.github }}" rel="noopener noreferrer">GitHub</a>
+        <a href="{{ p.site.linkedin }}" rel="noopener noreferrer">LinkedIn</a>
+        <a href="{{ p.site.email }}">Email</a>
+      </div>
+    </div>
+    <figure class="hero__portrait">
+      <img src="{{ p.site.profile_image | relative_url }}" alt="Portrait of Chandramouli Rajagopalan" width="220" height="220">
+    </figure>
+  </section>
+
+  <section class="section" id="research-vision" aria-labelledby="vision-title">
+    <div class="section__header">
+      <h2 id="vision-title">Research Vision</h2>
+      <p class="section__lead">{{ p.research_vision.question }}</p>
+    </div>
+    <p>{{ p.research_vision.body }}</p>
+    <div class="pillar-grid">
+      {% for pillar in p.research_vision.pillars %}
+        <article class="pillar">
+          <h3>{{ pillar.title }}</h3>
+          <p>{{ pillar.body }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="section" id="research" aria-labelledby="research-title">
+    <div class="section__header">
+      <h2 id="research-title">Selected Research</h2>
+      <p class="section__lead">Four flagship projects around sim-to-real transfer, adaptive robot learning, offline RL, world models, and multimodal feedback.</p>
+    </div>
+    <div class="project-list">
+      {% for project in p.projects %}
+        {% assign shown_media = false %}
+        {% for media in project.media %}
+          {% if media.available %}
+            {% assign shown_media = true %}
+          {% endif %}
+        {% endfor %}
+        <article class="project{% if project.featured %} project--featured{% endif %}{% unless shown_media %} project--no-media{% endunless %}">
+          <div class="project__body">
+            <div class="project__title-row">
+              <h3>{{ project.title }}</h3>
+              {% if project.featured %}
+                <span class="status-label">30 minutes uninterrupted</span>
+              {% endif %}
+            </div>
+            <p class="research-question">{{ project.question }}</p>
+            {% for paragraph in project.description %}
+              <p>{{ paragraph }}</p>
+            {% endfor %}
+            {% if project.highlights and project.highlights.size > 0 %}
+              <ul class="highlight-list">
+                {% for item in project.highlights %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+            <p class="contribution"><strong>My contribution:</strong> {{ project.contribution }}</p>
+            <div class="tag-list" aria-label="{{ project.title }} methods">
+              {% for method in project.methods %}
+                <span>{{ method }}</span>
+              {% endfor %}
+            </div>
+            {% if project.links and project.links.size > 0 %}
+              <div class="text-links">
+                {% for link in project.links %}
+                  <a href="{{ link.url }}" rel="noopener noreferrer">{{ link.label }}</a>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+          {% if shown_media %}
+            <div class="project__media{% if project.featured %} project__media--featured{% endif %}">
+              {% for media in project.media %}
+                {% if media.available %}
+                  <figure class="media-block">
+                    {% if media.type == "video" %}
+                      <video controls playsinline preload="metadata"{% if media.poster %} poster="{{ media.poster | relative_url }}"{% endif %}>
+                        <source src="{{ media.path | relative_url }}" type="video/mp4">
+                      </video>
+                    {% elsif media.type == "image" %}
+                      <img src="{{ media.path | relative_url }}" alt="{{ media.alt }}" loading="lazy">
+                    {% endif %}
+                    <figcaption>{{ media.caption }}</figcaption>
+                  </figure>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="section" id="directions" aria-labelledby="directions-title">
+    <div class="section__header">
+      <h2 id="directions-title">Research Directions</h2>
+      <p class="section__lead">{{ p.directions.intro }}</p>
+    </div>
+    <div class="direction-grid">
+      {% for direction in p.directions.items %}
+        <article class="direction">
+          <h3>{{ direction.title }}</h3>
+          <p>{{ direction.question }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="section" id="publications" aria-labelledby="publications-title">
+    <div class="section__header">
+      <h2 id="publications-title">Selected Publications</h2>
+    </div>
+    <div class="publication-list">
+      {% for publication in p.publications %}
+        <article class="publication">
+          <h3>{{ publication.title }}</h3>
+          {% if publication.authors and publication.authors.size > 0 %}
+            <p class="authors">
+              {% for author in publication.authors %}
+                {% if author == p.site.name %}<strong>{{ author }}</strong>{% else %}{{ author }}{% endif %}{% unless forloop.last %}, {% endunless %}
+              {% endfor %}
+            </p>
+          {% endif %}
+          <p class="venue">{{ publication.venue }}</p>
+          {% if publication.description %}
+            <p>{{ publication.description }}</p>
+          {% endif %}
+          {% if publication.links and publication.links.size > 0 %}
+            <div class="text-links">
+              {% for link in publication.links %}
+                <a href="{{ link.url }}" rel="noopener noreferrer">{{ link.label }}</a>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+    <p class="cv-note">Additional experience, projects, and technical details are available in my <a href="{{ p.site.cv_path }}">CV</a>.</p>
+  </section>
+
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="section__header">
+      <h2 id="about-title">About</h2>
+    </div>
+    <p>{{ p.about.body }}</p>
+    <a class="button button--secondary" href="{{ p.site.cv_path }}">CV</a>
+  </section>
+</main>
