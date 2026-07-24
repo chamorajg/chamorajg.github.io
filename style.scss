@@ -70,8 +70,10 @@ h3 {
 
 h1 {
   max-width: 860px;
-  font-size: 4.4rem;
+  font-size: clamp(1.75rem, 5.4vw, 3.65rem);
   font-weight: 700;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
 }
 
 h2 {
@@ -436,7 +438,7 @@ figcaption {
   }
 
   h1 {
-    font-size: 2.35rem;
+    font-size: clamp(1.4rem, 7.1vw, 1.75rem);
   }
 
   .hero__tagline,
