@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://chamorajg.github.io/sitemap.xml
