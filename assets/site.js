@@ -13,16 +13,30 @@ if (toc) {
   toc.hidden = headings.length === 0;
 }
 
-const themeSelect = document.querySelector('#theme-select');
-if (themeSelect) {
-  try {
-    const saved = localStorage.getItem('research-site-theme');
-    themeSelect.value = saved === 'light' || saved === 'dark' ? saved : 'system';
-  } catch (_) {}
-  themeSelect.addEventListener('change', () => {
-    const theme = themeSelect.value;
-    if (theme === 'system') delete document.documentElement.dataset.theme;
-    else document.documentElement.dataset.theme = theme;
-    try { localStorage.setItem('research-site-theme', theme); } catch (_) {}
+const themeButton = document.querySelector('.theme-toggle');
+if (themeButton) {
+  const modes = ['system', 'light', 'dark'];
+  const root = document.documentElement;
+  const icon = themeButton.querySelector('use');
+  let nextMode;
+
+  function showTheme(preference) {
+    const mode = modes.includes(preference) ? preference : 'system';
+    if (mode === 'system') delete root.dataset.theme;
+    else root.dataset.theme = mode;
+    nextMode = modes[(modes.indexOf(mode) + 1) % modes.length];
+    icon.setAttribute('href', '#theme-' + mode);
+    themeButton.setAttribute('aria-label', `Theme: ${mode}. Switch to ${nextMode}.`);
+  }
+
+  showTheme(root.dataset.theme);
+  themeButton.hidden = false;
+  themeButton.addEventListener('click', () => {
+    const chosen = nextMode;
+    showTheme(chosen);
+    try { localStorage.setItem('research-site-theme', chosen); } catch (_) {}
+  });
+  window.addEventListener('storage', (event) => {
+    if (event.key === 'research-site-theme' || event.key === null) showTheme(event.newValue);
   });
 }
